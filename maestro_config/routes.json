@@ -1,0 +1,10 @@
+[
+  {
+    "path": "test",
+    "handler": "test"
+  } ,
+  {
+    "path": "taist",
+    "handler": "taist"
+  }
+]

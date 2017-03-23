@@ -1,0 +1,7 @@
+{
+  "name": "maestro",
+  "version": "0.0.1",
+  "description": "nodeJS AWS Lambda CMF",
+  "author": "",
+  "license": "MIT"
+}
