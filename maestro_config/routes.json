@@ -1,10 +1,7 @@
 [
   {
-    "path": "test",
-    "handler": "test"
-  } ,
-  {
-    "path": "taist",
-    "handler": "taist"
+    "path": "/",
+    "method": "GET",
+    "handler": "custom.index"
   }
 ]

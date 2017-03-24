@@ -40,11 +40,11 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  index:
     handler: handler.index
     events:
       - http:
-          path: /
+          path: /{proxy+}
           method: any
           cors: true
 

@@ -15,6 +15,7 @@ module.exports.index = (event, context, callback) => {
     container.routes = routes;
     container.event = event;
     container.response = response;
+    container.lambda_callback = callback;
     maestro_session.start( container,function (container) {
         maestro_route.match(container, function (container) {
             callback(null, container.response);
@@ -24,5 +25,3 @@ module.exports.index = (event, context, callback) => {
     // Use this code if you don't use the http event with the LAMBDA-PROXY integration
     // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };
-
-
