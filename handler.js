@@ -11,11 +11,20 @@ module.exports.index = (event, context, callback) => {
             'Content-Type': 'text/html',
         }
     };
+    /**
+     * Construct Container
+     */
     let container = {};
     container.routes = routes;
     container.event = event;
     container.response = response;
     container.lambda_callback = callback;
+
+    /**
+     * Calling :
+     *  - fetch session
+     *  - match route
+     */
     maestro_session.start( container,function (container) {
         maestro_route.match(container, function (container) {
             callback(null, container.response);

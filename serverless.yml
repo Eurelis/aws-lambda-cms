@@ -44,6 +44,13 @@ functions:
     handler: handler.index
     events:
       - http:
+          path: /
+          method: any
+          cors: true
+  dispatcher:
+    handler: handler.index
+    events:
+      - http:
           path: /{proxy+}
           method: any
           cors: true

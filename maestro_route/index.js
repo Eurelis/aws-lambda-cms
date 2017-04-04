@@ -1,7 +1,7 @@
 exports.match = function (container, callback) {
 
     const route = this.getRoute(container);
-
+    console.log(container.event);
     if(!route) {
         container.response.statusCode = 404;
         container.response.body = "<h1>404</h1>";
