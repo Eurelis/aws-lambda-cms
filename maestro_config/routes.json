@@ -1,7 +1,0 @@
-[
-  {
-    "path": "/",
-    "method": "GET",
-    "handler": "custom.index"
-  }
-]

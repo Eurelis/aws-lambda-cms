@@ -3,5 +3,12 @@
   "version": "0.0.1",
   "description": "nodeJS AWS Lambda CMF",
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.41.0",
+    "cookie": "^0.3.1",
+    "handlebars": "^4.0.6",
+    "hat": "0.0.3",
+    "moment": "^2.18.1"
+  }
 }
