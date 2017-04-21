@@ -2,7 +2,7 @@
 
 exports.execute= function(event, context, callback) {
 
-    const maestro_route = require('maestro_core/route');
+    const maestro_route = require('maestro/route');
     const routes = require('config/routes.json');
 
     const response = {

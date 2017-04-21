@@ -8,6 +8,7 @@
     "aws-sdk": "^2.41.0",
     "cookie": "^0.3.1",
     "handlebars": "^4.0.6",
+    "handlebars-layouts": "^3.1.4",
     "hat": "0.0.3",
     "moment": "^2.18.1"
   }

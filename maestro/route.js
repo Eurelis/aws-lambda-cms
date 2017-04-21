@@ -5,12 +5,12 @@ exports.match = function (container, callback) {
 
     /** Check if route exist **/
     if(!route) {
-        return this.fireError(container,404);
+        return this.fireError(container,404,container.event.path);
     }
 
     /** check if is route is valid **/
     if(!this.checkRoute(route)) {
-        return this.fireError(container,500);
+        return this.fireError(container,500,route);
     }
 
     container.current_route = route;
@@ -50,16 +50,19 @@ exports.checkRoute = function (route) {
  */
 exports.getRoute = function (container) {
     return container.routes.find(function (route) {
-        if (route.path.toLowerCase() == container.event.path.toLowerCase()
+        if (route.path.toLowerCase() === container.event.path.toLowerCase()
             && route.method.indexOf(container.event.httpMethod.toLowerCase())>=0) {
             return route;
         }
     });
 };
 
-exports.fireError = function (container, errorCode) {
+exports.fireError = function (container, errorCode, err) {
     container.response.statusCode = errorCode;
     container.response.body = "<h1>"+errorCode+"</h1>";
+    if(err) {
+        console.log(err);
+    }
     return container.lambda_callback(null, container.response);
 };
 

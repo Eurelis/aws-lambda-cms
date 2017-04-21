@@ -2,11 +2,6 @@
   {
     "path": "/",
     "method": ["get"],
-    "handler": "./src/index"
-  },
-  {
-    "path": "/login",
-    "method": ["get","post"],
-    "handler": "src/login"
+    "handler": "src/index"
   }
 ]
