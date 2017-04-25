@@ -67,6 +67,6 @@ exports.destroy = function (key,container,callback) {
 exports.getCookies = function (container) {
     const cookie = require('cookie');
     const cookieStr = container.event.headers ? (container.event.headers.Cookie || '') : '';
-    const cookies = cookie.parse(cookieStr);
-    return cookies;
+    return cookie.parse(cookieStr);
 };
+

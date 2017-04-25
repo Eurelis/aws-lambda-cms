@@ -1,8 +1,11 @@
 'use strict';
 
-exports.execute= function(event, context, callback) {
+exports.route = require('maestro/route');
+exports.template = require('maestro/template');
+exports.session = require('maestro/session');
 
-    const maestro_route = require('maestro/route');
+exports.execute = function(event, context, callback) {
+
     const routes = require('config/routes.json');
 
     const response = {
@@ -17,16 +20,34 @@ exports.execute= function(event, context, callback) {
      */
     let container = {};
     container.routes = routes;
+    container.session = {};
     container.event = event;
     container.response = response;
     container.lambda_callback = callback;
 
-    /**
-     * Check route and execute
-     */
-    maestro_route.match(container, function (container) {
-        maestro_route.execute(container, function (container) {
-            callback(null, container.response);
+
+    exports.route.match(container, function (container) { // check route
+        exports.getSession(container, function (container) { // get maestro session
+            exports.route.execute(container, function (container) { // execute route
+                exports.setSession(container,function (container) { // set session before final callback
+                    callback(null, container.response);
+                });
+            });
         });
+    });
+};
+
+exports.getSession = function (container,callback) {
+    exports.session.get('maestro',container,function (container,data) {
+        if(data.valid) {
+            container.session = data.data ;
+        }
+        callback(container);
+    });
+};
+
+exports.setSession = function (container, callback) {
+    exports.session.set('maestro',container.session,container, function(container, data){
+        callback(container);
     });
 };

@@ -2,7 +2,7 @@
 
 exports.render= function(file, view, container, callback) {
 
-    const maestro_route = require('maestro/route');
+    const maestro = require('maestro/core');
     const fs = require('fs');
     const handlebars = require("handlebars");
     const handlebars_layout = require("handlebars-layouts");
@@ -26,7 +26,7 @@ exports.render= function(file, view, container, callback) {
         }
 
         if (err) {
-            return maestro_route.fireError(container,500,err);
+            return maestro.route.fireError(container,500,err);
         }
 
         const content = handlebars.compile(data);
@@ -34,23 +34,5 @@ exports.render= function(file, view, container, callback) {
         container.response.body = content(view);
         callback(container);
 
-        //
-        // if(fs.existsSync('template/global.html')) {
-        //
-        //     fs.readFile('template/global.html','utf8', function (err,data) {
-        //
-        //         if (err) {
-        //             return maestro_route.fireError(container,500);
-        //         }
-        //
-        //         const template = handlebars.compile(data);
-        //
-        //         container.response.body = template({'content':rendered});
-        //         callback(container);
-        //     });
-        // } else {
-        //     container.response.body = rendered;
-        //     callback(container);
-        // }
     });
 };
